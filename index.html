@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>લાલ બહાદુર શાસ્ત્રી</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1e3c72;
+      --secondary: #2a5298;
+      --accent: #ff9800;
+      --success: #28a745;
+      --danger: #dc3545;
+      --bg: #f4f7fc;
+      --card-bg: #ffffff;
+      --text-dark: #2c3e50;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Hind Vadodara', sans-serif;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    input {
+      -webkit-user-select: auto;
+      -moz-user-select: auto;
+      -ms-user-select: auto;
+      user-select: auto;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: var(--text-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      overflow: hidden;
+      border: 2px solid #e2e8f0;
+      position: relative;
+    }
+
+    .top-banner {
+      background: linear-gradient(135deg, #800000 0%, #5a0000 100%);
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .top-banner h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .top-banner p {
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    .creator-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .content-box {
+      padding: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      background: linear-gradient(135deg, #800000 0%, #5a0000 100%);
+      color: white;
+      padding: 14px 20px;
+      font-size: 17px;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(128,0,0,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(128,0,0,0.4);
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      font-weight: 700;
+      color: #475569;
+      font-size: 14px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 5%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      transition: width 0.3s ease;
+    }
+
+    .question-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .option-btn {
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 600;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease;
+      color: #334155;
+    }
+
+    .option-btn:hover:not([disabled]) {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+      transform: translateX(4px);
+    }
+
+    .option-btn .opt-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: #e2e8f0;
+      border-radius: 50%;
+      margin-right: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
+    }
+
+    .option-btn.correct .opt-badge {
+      background: #22c55e;
+      color: white;
+    }
+
+    .option-btn.incorrect {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
+    }
+
+    .option-btn.incorrect .opt-badge {
+      background: #ef4444;
+      color: white;
+    }
+
+    .feedback-box {
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: none;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.95); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .feedback-box.correct {
+      background: #ecfdf5;
+      color: #065f46;
+      border-left: 6px solid #10b981;
+    }
+
+    .feedback-box.incorrect {
+      background: #fff1f2;
+      color: #9f1239;
+      border-left: 6px solid #f43f5e;
+    }
+
+    .result-screen {
+      text-align: center;
+      display: none;
+    }
+
+    .score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+    }
+
+    .score-circle .score-num {
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .score-circle .score-label {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .canvas-container {
+      margin: 20px auto;
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border: 3px solid #cbd5e1;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-secondary {
+      background: #64748b;
+      box-shadow: 0 4px 15px rgba(100,116,139,0.3);
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 6px 20px rgba(100,116,139,0.4);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 4px 15px rgba(16,185,129,0.3);
+    }
+
+    .btn-success:hover {
+      box-shadow: 0 6px 20px rgba(16,185,129,0.4);
+    }
+
+    .instruction-card {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 25px;
+      border: 1px dashed #94a3b8;
+    }
+
+    .instruction-card h3 {
+      font-size: 15px;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .instruction-card ul {
+      padding-left: 20px;
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    #lock-alert-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #090d16;
+      color: #ef4444;
+      z-index: 9999999;
+      text-align: center;
+      padding-top: 20vh;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .content-box { padding: 20px; }
+      .top-banner h1 { font-size: 20px; }
+      .question-title { font-size: 16px; }
+      .btn-group { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="lock-alert-screen">
+  🔒 સુરક્ષા ચેતવણી: ફાઈલ સાથે છેડછાડ (Tampering) થયેલ છે!<br>
+  <span style="font-size: 17px; color: #cbd5e1; margin-top: 15px; display: inline-block; font-weight: normal;">
+    આ ક્વિઝના સર્જકનું નામ કે ક્રેડિટ લાઇન બદલવાથી સિસ્ટમ લૉક થઈ ગઈ છે.
+  </span>
+</div>
+
+<div class="container" id="quiz-main-container">
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <h1>લાલ બહાદુર શાસ્ત્રી</h1>
+    <p id="quiz-subtitle">લાલ બહાદુર શાસ્ત્રીને શ્રદ્ધાંજલિ</p>
+
+    <div class="creator-badge" id="creatorBadge">
+      🎨 ક્વિઝ નિર્માતા: અમરજીતસિંહ પરમાર
+    </div>
+  </div>
+
+  <!-- Screen 1 -->
+  <div class="content-box" id="start-screen">
+    <div class="instruction-card">
+      <h3>📌 ક્વિઝ વિશે માહિતી:</h3>
+      <ul>
+        <li>આ ક્વિઝમાં લાલ બહાદુર શાસ્ત્રી આધારીત મહત્વપૂર્ણ <b id="total-question-info">10 MCQ</b> પ્રશ્નો સમાવેલ છે.</li>
+        <li>દરેક પ્રશ્ન 1 ગુણનો રહેશે (કુલ <span id="total-marks-info">10</span> ગુણ).</li>
+        <li>દરેક સાચા જવાબ પર પ્રોત્સાહક અભિનંદન અને ખોટા જવાબ પર માર્ગદર્શન મળશે.</li>
+        <li>ક્વિઝ પૂર્ણ થયા બાદ તમને તમારા નામ વાળું <b>સુવર્ણ પ્રમાણપત્ર (Certificate)</b> મળશે જે તમે ડાઉનલોડ કરી શકશો!</li>
+      </ul>
+    </div>
+
+    <div class="input-group">
+      <label for="studentName">👤 તમારું પૂરું નામ લખો:</label>
+      <input type="text" id="studentName" placeholder="દા.ત. અમરજીતસિંહ પરમાર" autocomplete="off">
+    </div>
+
+    <div class="input-group">
+      <label for="schoolName">🏫 તમારી શાળાનું નામ લખો:</label>
+      <input type="text" id="schoolName" placeholder="દા.ત. લાખાણકા પ્રાથમિક શાળા" autocomplete="off">
+    </div>
+
+    <button class="btn" onclick="startQuiz()">🚀 ક્વિઝ શરૂ કરો</button>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="content-box" id="quiz-screen" style="display: none;">
+    <div class="quiz-header">
+      <span id="question-progress">પ્રશ્ન: 1 / 10</span>
+      <span id="score-counter">ગુણ: 0</span>
+    </div>
+
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="question-title" id="question-text">પ્રશ્ન અહીં દેખાશે...</div>
+    <div class="options-grid" id="options-container"></div>
+    <div class="feedback-box" id="feedback-box"></div>
+
+    <button class="btn" id="next-btn" onclick="nextQuestion()" style="display: none;">
+      આગળનો પ્રશ્ન ➔
+    </button>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="content-box result-screen" id="result-screen">
+    <div class="score-circle">
+      <div class="score-num" id="final-score">0</div>
+      <div class="score-label" id="final-score-label">કુલ ગુણ / 10</div>
+    </div>
+
+    <h2 id="result-greeting" style="font-size: 22px; color: #1e293b; margin-bottom: 8px;">ખૂબ સરસ!</h2>
+    <p id="result-subtitle" style="color: #64748b; font-size: 15px; margin-bottom: 20px;">
+      તમે આ ક્વિઝ સફળતાપૂર્વક પૂર્ણ કરી છે.
+    </p>
+
+    <h3 style="text-align: left; font-size: 16px; margin-bottom: 10px; color: #334155;">
+      📜 તમારું પ્રમાણપત્ર (Certificate):
+    </h3>
+
+    <div class="canvas-container">
+      <canvas id="certCanvas" width="900" height="630"></canvas>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-success" onclick="downloadCertificate()">
+        📥 સર્ટિફિકેટ ડાઉનલોડ કરો
+      </button>
+      <button class="btn btn-secondary" onclick="restartQuiz()">
+        🔄 ફરીથી ક્વિઝ રમો
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+  return false;
+});
+
+document.addEventListener("keydown", function(e) {
+  // F12, Ctrl+U, Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && (e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S")) ||
+    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "i" || e.key === "J" || e.key === "j" || e.key === "C" || e.key === "c"))
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+});
+
+
+const _AUTH_HASH_KEY = "અમરજીતસિંહ પરમાર";
+const _AUTH_ALT_KEY = "AMARJEETSINH PARMAR";
+
+function lockSystemDueToTampering() {
+  const overlay = document.getElementById("lock-alert-screen");
+  if (overlay) overlay.style.display = "block";
+  const container = document.getElementById("quiz-main-container");
+  if (container) container.remove();
+  throw new Error("System locked: Unauthorized tampering detected.");
+}
+
+function verifyAuthorCredits() {
+  const badge = document.getElementById("creatorBadge");
+  if (!badge) {
+    lockSystemDueToTampering();
+    return false;
+  }
+  const content = badge.innerText || badge.textContent || "";
+  if (!content.includes(_AUTH_HASH_KEY) && !content.toUpperCase().includes(_AUTH_ALT_KEY)) {
+    lockSystemDueToTampering();
+    return false;
+  }
+  return true;
+}
+
+const observer = new MutationObserver(function() {
+  verifyAuthorCredits();
+});
+observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+setInterval(verifyAuthorCredits, 2000);
+
+
+function _getSecureEndpoint() {
+  // Hex-Encoded Google Script URL
+  const _hex = [
+    "68","74","74","70","73","3a","2f","2f","73","63","72","69","70","74","2e","67",
+    "6f","6f","67","6c","65","2e","63","6f","6d","2f","6d","61","63","72","6f","73",
+    "2f","73","2f","41","4b","66","79","63","62","7a","4d","48","76","57","2d","76",
+    "35","47","77","4d","37","5a","43","56","6f","34","6d","61","47","43","31","44",
+    "71","75","66","4b","57","34","30","71","4c","56","65","6d","4d","69","35","61",
+    "75","54","66","79","72","47","69","67","37","58","74","74","45","48","76","6a",
+    "6e","68","72","71","63","35","73","39","4e","46","34","46","51","2f","65","78",
+    "65","63"
+  ];
+  return _hex.map(h => String.fromCharCode(parseInt(h, 16))).join("");
+}
+
+const GOOGLE_SCRIPT_URL = _getSecureEndpoint();
+const QUIZ_NAME = "લાલ બહાદુર શાસ્ત્રી";
+
+
+/* =========================================================
+   પ્રશ્નોત્તરી ડેટા
+   ========================================================= */
+const questions = [
+  {
+    q: "1. લાલ બહાદુર શાસ્ત્રીનો જન્મ કઈ તારીખે થયો હતો?",
+    options: [
+      "2 ઓક્ટોબર, 1904",
+      "15 ઓગસ્ટ, 1904",
+      "26 જાન્યુઆરી, 1905",
+      "14 નવેમ્બર, 1904"
+    ],
+    answer: 0,
+  },
+  {
+    q: "2. લાલ બહાદુર શાસ્ત્રીનો જન્મ ક્યાં થયો હતો?",
+    options: [
+      "વારાણસી",
+      "મુગલસરાય",
+      "લખનઉ",
+      "અલાહાબાદ"
+    ],
+    answer: 1,
+  },
+  {
+    q: "3. લાલ બહાદુર શાસ્ત્રીનું પૂરું નામ શું હતું?",
+    options: [
+      "લાલ બહાદુર શાસ્ત્રી",
+      "લાલ બહાદુર શ્રીવાસ્તવ",
+      "લાલ બહાદુર પ્રસાદ",
+      "લાલ બહાદુર સિંહ"
+    ],
+    answer: 1,
+  },
+  {
+    q: "4. લાલ બહાદુર શાસ્ત્રી ભારતના કયા ક્રમના વડાપ્રધાન હતા?",
+    options: [
+      "પ્રથમ",
+      "બીજા",
+      "ત્રીજા",
+      "ચોથા"
+    ],
+    answer: 1,
+  },
+  {
+    q: "5. લાલ બહાદુર શાસ્ત્રીનું પ્રસિદ્ધ સૂત્ર કયું હતું?",
+    options: [
+      "જય હિંદ",
+      "સત્યમેવ જયતે",
+      "જય જવાન, જય કિસાન",
+      "વંદે માતરમ્"
+    ],
+    answer: 2,
+  },
+  {
+    q: "6. લાલ બહાદુર શાસ્ત્રીએ ભારતના વડાપ્રધાન તરીકે કયા સમયગાળા દરમિયાન સેવા આપી હતી?",
+    options: [
+      "1947 થી 1952",
+      "1952 થી 1956",
+      "1964 થી 1966",
+      "1966 થી 1969"
+    ],
+    answer: 2,
+  },
+  {
+    q: "7. લાલ બહાદુર શાસ્ત્રીને તેમની સાદગી અને ઈમાનદારી માટે કયા ગુણો માટે યાદ કરવામાં આવે છે?",
+    options: [
+      "સાદગી, પ્રામાણિકતા અને કર્તવ્યનિષ્ઠા",
+      "સંપત્તિ અને વૈભવ",
+      "સાહસિક પ્રવાસો",
+      "વ્યાપાર કુશળતા"
+    ],
+    answer: 0,
+  },
+  {
+    q: "8. 2 ઓક્ટોબરના રોજ લાલ બહાદુર શાસ્ત્રી સાથે કોની જન્મજયંતિ પણ ઉજવવામાં આવે છે?",
+    options: [
+      "સરદાર વલ્લભભાઈ પટેલ",
+      "મહાત્મા ગાંધી",
+      "જવાહરલાલ નેહરુ",
+      "સુભાષચંદ્ર બોઝ"
+    ],
+    answer: 1,
+  },
+  {
+    q: "9. લાલ બહાદુર શાસ્ત્રી કયા આંદોલનમાં મહાત્મા ગાંધીના આહ્વાનથી જોડાયા હતા?",
+    options: [
+      "અસહકાર આંદોલન",
+      "ભારત છોડો આંદોલન",
+      "ચંપારણ સત્યાગ્રહ",
+      "ખેડા સત્યાગ્રહ"
+    ],
+    answer: 0,
+  },
+  {
+    q: "10. લાલ બહાદુર શાસ્ત્રીના નિધન પછી તેમને ભારતનું કયું સર્વોચ્ચ નાગરિક સન્માન મરણોત્તર આપવામાં આવ્યું હતું?",
+    options: [
+      "પદ્મશ્રી",
+      "પદ્મવિભૂષણ",
+      "ભારત રત્ન",
+      "પરમવીર ચક્ર"
+    ],
+    answer: 2,
+  }
+];
+
+let currentQuestionIndex = 0;
+let userScore = 0;
+let studentName = "";
+let schoolName = "";
+let selectedAnswer = null;
+let resultSent = false;
+const totalMarks = questions.length;
+
+const correctCompliments = [
+  "🌟 શાબાશ! ખૂબ જ સચોટ જવાબ!",
+  "👏 વાહ! ખૂબ સરસ! સાચો જવાબ છે.",
+  "🏆 અભિનંદન! તમે તો ખૂબ હોશિયાર છો!",
+  "🎯 અદ્ભુત! તમારો જવાબ બિલકુલ સાચો છે.",
+  "✨ જબરદસ્ત જ્ઞાન! શાબાશ વિદ્યાર્થી મિત્ર!"
+];
+
+const incorrectEncouragements = [
+  "💡 અરેરે! જવાબ ખોટો પડ્યો. ફરી પ્રયત્ન કરો!",
+  "🌱 ચિંતા ન કરશો, ભૂલમાંથી જ શીખાય છે! ફરી પ્રયાસ કરો.",
+  "📖 જવાબ ખોટો છે, પણ સાચો જવાબ યાદ રાખી લો!",
+  "💪 હિમ્મત ન હારશો! આગળનો પ્રશ્ન સાચો પાડવાનો પ્રયત્ન કરો."
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+  verifyAuthorCredits();
+  document.getElementById("total-question-info").textContent = totalMarks + " MCQ";
+  document.getElementById("total-marks-info").textContent = totalMarks;
+  document.getElementById("final-score-label").textContent = "કુલ ગુણ / " + totalMarks;
+});
+
+function startQuiz() {
+  verifyAuthorCredits();
+  const nameInput = document.getElementById("studentName").value.trim();
+  const schoolInput = document.getElementById("schoolName").value.trim();
+
+  if (!nameInput) {
+    alert("મહેરબાની કરીને તમારું નામ લખો!");
+    return;
+  }
+
+  studentName = nameInput;
+  schoolName = schoolInput || "ગુજરાત";
+
+  currentQuestionIndex = 0;
+  userScore = 0;
+  selectedAnswer = null;
+  resultSent = false;
+
+  document.getElementById("start-screen").style.display = "none";
+  document.getElementById("quiz-screen").style.display = "block";
+  document.getElementById("quiz-subtitle").style.display = "none";
+
+  loadQuestion();
+}
+
+function loadQuestion() {
+  verifyAuthorCredits();
+  const q = questions[currentQuestionIndex];
+
+  document.getElementById("question-progress").textContent = `પ્રશ્ન: ${currentQuestionIndex + 1} / ${totalMarks}`;
+  document.getElementById("score-counter").textContent = `ગુણ: ${userScore}`;
+
+  const progressPercent = ((currentQuestionIndex + 1) / totalMarks) * 100;
+  document.getElementById("progress-fill").style.width = `${progressPercent}%`;
+
+  document.getElementById("question-text").textContent = q.q;
+
+  const optionsContainer = document.getElementById("options-container");
+  optionsContainer.innerHTML = "";
+
+  const labels = ["A", "B", "C", "D"];
+
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "option-btn";
+    btn.innerHTML = `<span class="opt-badge">${labels[idx]}</span><span>${opt}</span>`;
+    btn.onclick = () => checkAnswer(idx);
+    optionsContainer.appendChild(btn);
+  });
+
+  const feedbackBox = document.getElementById("feedback-box");
+  feedbackBox.style.display = "none";
+  feedbackBox.className = "feedback-box";
+  document.getElementById("next-btn").style.display = "none";
+  selectedAnswer = null;
+}
+
+function checkAnswer(chosenIndex) {
+  if (selectedAnswer !== null) return;
+  selectedAnswer = chosenIndex;
+
+  const q = questions[currentQuestionIndex];
+  const optionButtons = document.querySelectorAll(".option-btn");
+  const feedbackBox = document.getElementById("feedback-box");
+
+  optionButtons.forEach(btn => { btn.disabled = true; });
+
+  if (chosenIndex === q.answer) {
+    userScore++;
+    document.getElementById("score-counter").textContent = `ગુણ: ${userScore}`;
+    optionButtons[chosenIndex].classList.add("correct");
+
+    const randomCompliment = correctCompliments[Math.floor(Math.random() * correctCompliments.length)];
+    feedbackBox.innerHTML = `<div>${randomCompliment}</div>`;
+    feedbackBox.className = "feedback-box correct";
+  } else {
+    optionButtons[chosenIndex].classList.add("incorrect");
+    optionButtons[q.answer].classList.add("correct");
+
+    const randomEncourage = incorrectEncouragements[Math.floor(Math.random() * incorrectEncouragements.length)];
+    feedbackBox.innerHTML = `<div>${randomEncourage}</div>`;
+    feedbackBox.className = "feedback-box incorrect";
+  }
+
+  feedbackBox.style.display = "block";
+  document.getElementById("next-btn").style.display = "block";
+}
+
+function nextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    loadQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  verifyAuthorCredits();
+  document.getElementById("quiz-screen").style.display = "none";
+  document.getElementById("result-screen").style.display = "block";
+
+  document.getElementById("final-score").textContent = userScore;
+  document.getElementById("final-score-label").textContent = `કુલ ગુણ / ${totalMarks}`;
+
+  const percentage = Math.round((userScore / totalMarks) * 100);
+  let greeting = "";
+  let sub = "";
+
+  if (percentage >= 90) {
+    greeting = "🌟 અભિનંદન! તમે તો ખૂબ હોશિયાર છો!";
+    sub = "તમારું પ્રદર્શન ઉત્કૃષ્ટ છે! ખૂબ સરસ!";
+  } else if (percentage >= 70) {
+    greeting = "👏 શાબાશ! ખૂબ સરસ પરિણામ!";
+    sub = "તમે ખૂબ જ સરસ પ્રદર્શન કર્યું છે. અભ્યાસ ચાલુ રાખજો!";
+  } else if (percentage >= 50) {
+    greeting = "👍 સારું પ્રદર્શન! ફરી પ્રયત્ન કરો!";
+    sub = "થોડી વધુ મહેનત કરશો તો વધુ સારું પરિણામ મેળવી શકશો.";
+  } else {
+    greeting = "💪 ફરી પ્રયત્ન કરો! હિંમત ન હારો!";
+    sub = "ફરીથી અભ્યાસ કરીને ક્વિઝનો પ્રયાસ કરો.";
+  }
+
+  document.getElementById("result-greeting").textContent = greeting;
+  document.getElementById("result-subtitle").textContent = sub;
+
+  generateCertificate();
+  sendResultToGoogleSheet();
+}
+
+function sendResultToGoogleSheet() {
+  if (resultSent) return;
+  resultSent = true;
+
+  const resultData = {
+    quiz: QUIZ_NAME,
+    name: studentName,
+    school: schoolName,
+    score: userScore,
+    total: totalMarks
+  };
+
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(resultData)
+  }).catch(() => {});
+}
+
+function generateCertificate() {
+  verifyAuthorCredits();
+  const canvas = document.getElementById("certCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, 900, 630);
+
+  // Borders
+  ctx.strokeStyle = "#1e3c72";
+  ctx.lineWidth = 14;
+  ctx.strokeRect(15, 15, 870, 600);
+
+  ctx.strokeStyle = "#ff9800";
+  ctx.lineWidth = 4;
+  ctx.strokeRect(28, 28, 844, 574);
+
+  // Corners
+  const drawCorner = (x, y) => {
+    ctx.fillStyle = "#1e3c72";
+    ctx.beginPath();
+    ctx.arc(x, y, 16, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = "#ffb703";
+    ctx.beginPath();
+    ctx.arc(x, y, 9, 0, Math.PI * 2);
+    ctx.fill();
+  };
+
+  drawCorner(35, 35);
+  drawCorner(865, 35);
+  drawCorner(35, 595);
+  drawCorner(865, 595);
+
+  // Certificate Header
+  ctx.textAlign = "center";
+  ctx.font = "36px 'Hind Vadodara', sans-serif";
+  ctx.fillText("⭐ 🏆 ⭐", 450, 75);
+
+  ctx.fillStyle = "#1e3c72";
+  ctx.font = "bold 32px 'Hind Vadodara', sans-serif";
+  ctx.fillText("પ્રશંસા અને સિદ્ધિ પ્રમાણપત્ર", 450, 120);
+
+  ctx.fillStyle = "#ff9800";
+  ctx.font = "bold 18px 'Hind Vadodara', sans-serif";
+  ctx.fillText("CERTIFICATE OF EXCELLENCE", 450, 148);
+
+  ctx.beginPath();
+  ctx.moveTo(320, 160);
+  ctx.lineTo(580, 160);
+  ctx.strokeStyle = "#cbd5e1";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.fillStyle = "#475569";
+  ctx.font = "16px 'Hind Vadodara', sans-serif";
+  ctx.fillText("આથી પ્રમાણિત કરવામાં આવે છે કે", 450, 195);
+
+  ctx.fillStyle = "#0f172a";
+  ctx.font = "bold 30px 'Hind Vadodara', sans-serif";
+  ctx.fillText(studentName, 450, 240);
+
+  ctx.fillStyle = "#64748b";
+  ctx.font = "italic 16px 'Hind Vadodara', sans-serif";
+  ctx.fillText(`શાળા: ${schoolName}`, 450, 272);
+
+  ctx.beginPath();
+  ctx.moveTo(250, 288);
+  ctx.lineTo(650, 288);
+  ctx.strokeStyle = "#e2e8f0";
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  ctx.fillStyle = "#334155";
+  ctx.font = "17px 'Hind Vadodara', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("એ લાલ બહાદુર શાસ્ત્રી જન્મજયંતિ પ્રસંગે યોજાયેલ ઓનલાઇન મૂલ્યાંકન કસોટીમાં ઉત્સાહપૂર્વક ભાગ લઈ", 450, 325);
+  ctx.fillText("ગૌરવપૂર્ણ સિદ્ધિ મેળવી છે. ભવિષ્યમાં પણ આવા જ ઉત્સાહ, મહેનત અને તેજસ્વીતા સાથે આગળ વધતા રહો", 450, 350);
+  ctx.fillText("અને શાળા તેમજ સમાજનું નામ ઉજ્જવળ કરો તેવી હાર્દિક શુભકામનાઓ.", 450, 375);
+
+  // Score Badge
+  ctx.fillStyle = "#f8fafc";
+  ctx.fillRect(310, 385, 280, 65);
+  ctx.strokeStyle = "#3b82f6";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(310, 385, 280, 65);
+
+  ctx.fillStyle = "#1e3c72";
+  ctx.font = "bold 22px 'Hind Vadodara', sans-serif";
+  ctx.fillText(`મેળવેલ ગુણ: ${userScore} / ${totalMarks}`, 450, 426);
+
+  // Date
+  const today = new Date();
+  const dateStr = today.toLocaleDateString("gu-IN", { day: "numeric", month: "long", year: "numeric" });
+
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#64748b";
+  ctx.font = "14px 'Hind Vadodara', sans-serif";
+  ctx.fillText(`તારીખ: ${dateStr}`, 80, 525);
+  ctx.fillText("સ્થળ: ઓનલાઇન ક્વિઝ પોર્ટલ", 80, 550);
+
+  // Creator Signature on Certificate
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#1e3c72";
+  ctx.font = "bold 16px 'Hind Vadodara', sans-serif";
+  ctx.fillText("Amarjeetsinh Parmar", 820, 525);
+
+  ctx.font = "13px 'Hind Vadodara', sans-serif";
+  ctx.fillStyle = "#64748b";
+  ctx.fillText("ક્વિઝ નિર્માતા અને માર્ગદર્શક", 820, 548);
+
+  // Verified Seal
+  ctx.beginPath();
+  ctx.arc(450, 535, 38, 0, Math.PI * 2);
+  ctx.fillStyle = "#eff6ff";
+  ctx.fill();
+  ctx.strokeStyle = "#3b82f6";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#1d4ed8";
+  ctx.font = "bold 10px 'Hind Vadodara', sans-serif";
+  ctx.fillText("VERIFIED", 450, 532);
+  ctx.fillText("EXCELLENCE", 450, 546);
+}
+
+function downloadCertificate() {
+  verifyAuthorCredits();
+  const canvas = document.getElementById("certCanvas");
+  const link = document.createElement("a");
+  const safeName = studentName.replace(/[\\/:*?"<>|]/g, "_").trim() || "Certificate";
+  link.download = `સર્ટિફિકેટ_${safeName}_જનરલ_નૉલેજ_ક્વિઝ_25.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+}
+
+function restartQuiz() {
+  document.getElementById("result-screen").style.display = "none";
+  document.getElementById("start-screen").style.display = "block";
+  document.getElementById("quiz-subtitle").style.display = "block";
+  document.getElementById("studentName").value = "";
+  document.getElementById("schoolName").value = "";
+  currentQuestionIndex = 0;
+  userScore = 0;
+  selectedAnswer = null;
+  resultSent = false;
+}
+</script>
+
+</body>
+</html>
